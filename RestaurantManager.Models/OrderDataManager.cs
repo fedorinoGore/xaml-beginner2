@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 
 namespace RestaurantManager.Models
 {
     public class OrderDataManager : DataManager
     {
-        public override event PropertyChangedEventHandler PropertyChanged;
+        private List<MenuItem> _selected = new List<MenuItem>();
+        private List<MenuItem> _items = new List<MenuItem>();
 
         protected override void OnDataLoaded()
         {
@@ -15,20 +14,30 @@ namespace RestaurantManager.Models
             this.CurrentlySelectedMenuItems = new List<MenuItem>
             {
                 this.MenuItems[3],
-                this.MenuItems[5]
+                this.MenuItems[5],
+                this.MenuItems[7],
             };
         }
 
-        public List<MenuItem> MenuItems { get; set; }
-
-        public List<MenuItem> CurrentlySelectedMenuItems { get; set; }
-
-        public void FireOrderPropertyChanged([CallerMemberName]string propName = null)
+        public List<MenuItem> MenuItems
         {
-            if (PropertyChanged != null)
+            get { return _items; }
+            set
             {
-                this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
+                _items = value;
+                base.FirePropertyChanged();
             }
         }
+
+        public List<MenuItem> CurrentlySelectedMenuItems
+        {
+            get { return _selected; }
+            set
+            {
+                _selected = value;
+                base.FirePropertyChanged();
+            }
+        }
+
     }
 }

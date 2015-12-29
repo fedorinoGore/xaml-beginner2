@@ -6,11 +6,9 @@ namespace RestaurantManager.Models
 {
     public class ExpediteDataManager : DataManager
     {
-        public override event PropertyChangedEventHandler PropertyChanged;
-
         protected override void OnDataLoaded()
         {
-
+            base.FirePropertyChanged();
         }
 
         public List<Order> OrderItems
@@ -18,9 +16,5 @@ namespace RestaurantManager.Models
             get { return base.Repository.Orders; }
         }
 
-        public void FireExpeditePropertyChanged([CallerMemberName]string propName = null)
-        {
-
-        }
     }
 }
