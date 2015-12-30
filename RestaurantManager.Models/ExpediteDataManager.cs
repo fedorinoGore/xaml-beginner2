@@ -8,7 +8,7 @@ namespace RestaurantManager.Models
     {
         protected override void OnDataLoaded()
         {
-            base.FirePropertyChanged();
+            base.FirePropertyChanged("OrderItems");
         }
 
         public List<Order> OrderItems
