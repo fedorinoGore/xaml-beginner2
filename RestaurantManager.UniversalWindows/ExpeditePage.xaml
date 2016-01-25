@@ -4,12 +4,16 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:RestaurantManager.UniversalWindows"
     xmlns:models="using:RestaurantManager.Models"
+    xmlns:extension="using:RestaurantManager.Extensions"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <Page.DataContext>
         <models:ExpediteDataManager />
     </Page.DataContext>
+    <Page.Resources>
+        <extension:Bool2ColorConverter x:Key="Bool2ColorConverter" TrueColor="Salmon" FalseColor="Transparent"/>
+    </Page.Resources>
     <Page.TopAppBar>
         <AppBar>
             <AppBarButton Label="Home" Click="MainPage_Click">
@@ -28,7 +32,7 @@
         <GridView Grid.Row="1" ItemsSource="{Binding OrderItems}">
             <GridView.ItemTemplate>
                 <DataTemplate>
-                    <Grid BorderBrush="AntiqueWhite" BorderThickness="1" Width="250" Margin="25">
+                    <Grid BorderBrush="AntiqueWhite" Background="#FF2B2B2B" BorderThickness="1" Width="250" Margin="25">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="160"/>
                             <RowDefinition Height="150"/>
@@ -36,11 +40,23 @@
                         <StackPanel Grid.Row="0">
                             <ListBox ItemsSource="{Binding Items}"/>
                         </StackPanel>
-                        <Grid Grid.Row="1" Background="Gray">
+                        <Grid Grid.Row="1"
+                              Background="{Binding Expedite, Converter={StaticResource Bool2ColorConverter}}">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="60"/>
                             </Grid.RowDefinitions>
+                            <!--<Grid.Background>
+                                <SolidColorBrush>
+                                <SolidColorBrush.Color>
+                                    <Binding Path="Expedite">
+                                        <Binding.Converter>
+                                            <extension:Bool2ColorConverter TrueColor="LightSalmon" FalseColor="Transparent"/>
+                                        </Binding.Converter>
+                                    </Binding>
+                                </SolidColorBrush.Color>
+                                </SolidColorBrush>
+                            </Grid.Background>-->
                             <StackPanel Grid.Row="0">
                                 <TextBlock Text="{Binding Table.Description}" Style="{StaticResource SubheaderTextBlockStyle}" Margin="10,0,0,0"/>
                                 <TextBlock  Text="{Binding SpecialRequests}" Margin="10,15,0,10" />
