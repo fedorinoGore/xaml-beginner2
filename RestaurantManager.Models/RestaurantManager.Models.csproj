@@ -114,9 +114,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataManager.cs" />
-    <Compile Include="ExpediteDataManager.cs" />
     <Compile Include="MenuItems.cs" />
-    <Compile Include="OrderDataManager.cs" />
     <Compile Include="MenuItem.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

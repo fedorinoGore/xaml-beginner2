@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using RestaurantManager.Models;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace RestaurantManager.Models
+namespace RestaurantManager.ViewModels
 {
-    public class ExpediteDataManager : DataManager
+    public class ExpediteViewModel : ViewModel
     {
         protected override void OnDataLoaded()
         {

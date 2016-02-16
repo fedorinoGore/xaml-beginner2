@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using RestaurantManager.Models;
 
-namespace RestaurantManager.Models
+namespace RestaurantManager.ViewModels
 {
-    public class OrderDataManager : DataManager
+    public class OrderViewModel : ViewModel
     {
         private List<MenuItem> _selected = new List<MenuItem>();
         private List<MenuItem> _items = new List<MenuItem>();

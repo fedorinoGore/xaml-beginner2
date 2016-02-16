@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 
 namespace RestaurantManager.Models
 {
-    public abstract class DataManager: INotifyPropertyChanged
+    public abstract class DataManager : INotifyPropertyChanged
     {
         protected RestaurantContext Repository { get; private set; }
         public event PropertyChangedEventHandler PropertyChanged;
@@ -20,8 +20,8 @@ namespace RestaurantManager.Models
             //{
             //    this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
             //} 
-            
-            //Instead using modern c# syntax:
+
+            //Instead using modern С#6 syntax:
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
 

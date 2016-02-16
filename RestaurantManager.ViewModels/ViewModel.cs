@@ -21,18 +21,15 @@ namespace RestaurantManager.ViewModels
         private async void LoadData()
         {
             this.Repository = await RestaurantContextFactory.GetRestaurantContextAsync();
-            onDataLoaded();
+            OnDataLoaded();
         }
 
-        protected abstract void onDataLoaded();
+        protected abstract void OnDataLoaded();
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void FirePropertyChanged([CallerMemberName] string propertyName = null)
         {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
