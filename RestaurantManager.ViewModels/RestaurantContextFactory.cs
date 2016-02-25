@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace RestaurantManager.ViewModels
 {
-    public static class RestaurantContextFactory
+    public static class RestaurantContextFactory //Location Service Pattern
     {
         private static RestaurantContext _restaurantContext;
 

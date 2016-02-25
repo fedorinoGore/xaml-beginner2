@@ -33,12 +33,40 @@
             <RowDefinition Height="0.10*"/>
             <RowDefinition Height="0.10*"/>
         </Grid.RowDefinitions>
+        <TextBlock Grid.Row="2" Grid.Column="1" Text="Order Items:" Grid.ColumnSpan="2" Margin="1,0,255,0" />
         <TextBlock Grid.Row="2" Grid.Column="2" Text="Special Requests:" />
-        <TextBlock Grid.Row="2" Grid.Column="1" Text="Order Items:" />
-        <TextBox Grid.Row="3" Grid.Column="2" />
-        <ListView Grid.Row="2" Grid.RowSpan="3" Grid.Column="0" Margin="10" ItemsSource="{Binding MenuItems}" DisplayMemberPath="Title" />
-        <ListView Grid.Row="3" Grid.RowSpan="2" Grid.Column="1" Margin="10" ItemsSource="{Binding CurrentlySelectedMenuItems}" DisplayMemberPath="Title" />
-        <Button Content="Add to Order" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="5" Grid.Column="0" />
-        <Button Content="Submit Order" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" />
+        <TextBox x:Name="SpecialRequest"
+                 Text="{Binding SpecialRequestText, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                 TextAlignment="Left"
+                 Style="{StaticResource AutoSuggestBoxTextBoxStyle}"
+                 Grid.Row="3" Grid.Column="2" Margin="10" TextWrapping="Wrap"/>
+
+        <ListView  x:Name="MenuItems"
+                   Grid.Row="2" Grid.RowSpan="3" Grid.Column="0" Margin="10"
+                   ItemsSource="{Binding MenuItems}" DisplayMemberPath="Title"/>
+        
+        <ListView Grid.Row="3" x:Name="SelectedMenuItems"
+                  Grid.RowSpan="2" Grid.Column="1" Margin="10"
+                  ItemsSource="{Binding CurrentlySelectedMenuItems}" DisplayMemberPath="Title" />
+        
+        <Button Content="Add to Order"
+                Command="{Binding AddToOrderCommand}" CommandParameter="{Binding SelectedIndex, ElementName=MenuItems}" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="5" Grid.Column="0" />
+        
+        <Button Content="Submit Order" Command="{Binding SubmitOrderCommand}"
+                HorizontalAlignment="Center" VerticalAlignment="Center"
+                Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2">
+            <Button.Flyout>
+                <Flyout>
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource BaseTextBlockStyle}">
+                    Order sucessfully submitted.
+                        </TextBlock>
+                        <Button Click="FlyoutExpediteButton_Click" Margin="0,5,0,0" Style="{StaticResource smallButton}">
+                            Expedite
+                        </Button>
+                    </StackPanel>
+                </Flyout>
+            </Button.Flyout>
+        </Button>
     </Grid>
 </Page>

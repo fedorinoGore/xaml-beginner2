@@ -115,6 +115,10 @@
     <EmbeddedResource Include="Properties\RestaurantManager.ViewModels.rd.xml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Extensions\RestaurantManager.Extensions.csproj">
+      <Project>{63526f5c-a217-480e-8ab0-92345b2b793e}</Project>
+      <Name>RestaurantManager.Extensions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RestaurantManager.Models\RestaurantManager.Models.csproj">
       <Project>{7ea2b405-e454-4f0c-a8c3-d6bf3f814f5c}</Project>
       <Name>RestaurantManager.Models</Name>

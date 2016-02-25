@@ -108,6 +108,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bool2ColorConverter.cs" />
+    <Compile Include="DelegateCommand.cs" />
+    <Compile Include="DoNothingConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RightClickBehavior.cs" />
     <EmbeddedResource Include="Properties\Extensions.rd.xml" />
